@@ -1,3 +1,5 @@
+package com.cinema_palace;
+
 import java.util.ArrayList;
 
 public class User {
@@ -37,6 +39,4 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
-
 }

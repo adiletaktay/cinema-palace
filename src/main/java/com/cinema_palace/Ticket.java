@@ -1,3 +1,5 @@
+package com.cinema_palace;
+
 public class Ticket {
     private int id;
     private int userId;

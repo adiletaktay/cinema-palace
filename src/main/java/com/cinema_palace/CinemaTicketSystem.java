@@ -1,3 +1,5 @@
+package com.cinema_palace;
+
 import java.util.ArrayList;
 
 public class CinemaTicketSystem {
@@ -7,9 +9,6 @@ public class CinemaTicketSystem {
     private static int userIdCounter = 0;
     private static ArrayList<Ticket> tickets = new ArrayList<>();
     private static int ticketCounter = 0;
-
-    public CinemaTicketSystem() {
-    }
 
     public int addMovie(String movieName) {
         movieIdCounter += 1;
@@ -89,13 +88,13 @@ public class CinemaTicketSystem {
                     movieName = m.getName();
                 }
             }
-            System.out.println(t.getId()+"- Пользаватель :"+userName+", фильм:"+movieName);
+            System.out.println(t.getId() + "- Пользаватель :" + userName + ", фильм:" + movieName);
         }
     }
 
-    public void showUsers(){
-        for (User u : users){
-            System.out.println(u.getId()+"-"+u.getUserName());
+    public void showUsers() {
+        for (User u : users) {
+            System.out.println(u.getId() + "-" + u.getUserName());
         }
     }
 }

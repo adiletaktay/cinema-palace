@@ -1,6 +1,8 @@
+package com.cinema_palace;
+
 public class Movie {
-   private int id;
-   private String name;
+    private int id;
+    private String name;
 
     public Movie(String name) {
         this.name = name;

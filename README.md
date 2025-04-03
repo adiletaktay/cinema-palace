@@ -1,15 +1,40 @@
+# Java Spring Project
+
+This project is a web application built using the Spring Framework. It demonstrates core development principles using Spring Boot, Spring Data, Spring MVC, and other technologies within the Spring ecosystem.
+
+## Tech Stack
+
+- **Java**: Version 21
+- **Spring Boot**: Version 3.4.4
+- **Build Tool**: Maven
+- **Database**: PostgreSQL
+- **Other Dependencies**: Lombok, Spring Data JPA
+
 ## Prerequisites
 
-1. Java 1.8 or higher installed on your system
-2. Environment variable JAVA_HOME set to the Java installation directory
+Before starting, ensure you have the following installed:
+
+- JDK 21
+- Maven
+- Docker (optional, for containerization)
+- IntelliJ IDEA (or any other preferred IDE)
 
 ## Installation
 
-### Clone this repository to your local machine:
+1. Clone the repository:
 
 `git clone https://github.com/adiletaktay/cinema-palace.git`
 
-### Run from IDE
+2. Navigate to the project directory: `cd cinema-palace`
 
-1. Open the project in your favorite IDE (eg IntelliJ IDEA, Eclipse).
-2. Click the "Run" button.
+3. Make sure you have Maven
+
+4. Install the dependencies:
+   `mvn install`
+
+5. To run the application, use the following command: `mvn spring-boot:run`
+
+
+## Configuration
+
+Edit the `application.properties` or `application.yml` file to configure database settings and other properties.

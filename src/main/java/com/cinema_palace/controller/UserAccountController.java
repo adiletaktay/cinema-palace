@@ -13,13 +13,19 @@ public class UserAccountController {
     @Autowired
     private UserAccountService userAccountService;
 
-    @PostMapping("/api/register")
+    @PostMapping("api/register")
     public ResponseEntity<UserAccount> userRegister(@RequestBody UserAccount newUser) {
         return new ResponseEntity<UserAccount>(userAccountService.userRegister(newUser), HttpStatus.CREATED);
     }
 
-    @GetMapping("/api/login/{email}")
-    public UserAccount userLogin(@PathVariable String email) {
-        return userAccountService.userLogin(email);
+    @GetMapping("api/verifyEmail/{email}")
+    public boolean emailExists(@PathVariable String email) {
+        return userAccountService.emailExists(email);
+    }
+
+    @GetMapping("api/authenticator/{email}/{password}")
+    public ResponseEntity<Boolean> userAuthentication(@PathVariable("email") String email, @PathVariable("password") String password) {
+        boolean validity = userAccountService.userAuthentication(email, password);
+        return ResponseEntity.ok(validity);
     }
 }

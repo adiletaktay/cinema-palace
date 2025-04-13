@@ -4,9 +4,11 @@ import com.cinema_palace.model.UserAccount;
 import com.cinema_palace.repository.UserAccountRepo;
 import com.cinema_palace.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class UserAccountServiceImpl implements UserAccountService {
     @Autowired
     private UserAccountRepo userAccountRepository;

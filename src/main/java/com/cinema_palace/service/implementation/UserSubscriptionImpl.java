@@ -4,10 +4,12 @@ import com.cinema_palace.model.UserSubscription;
 import com.cinema_palace.repository.UserSubscriptionRepo;
 import com.cinema_palace.service.UserSubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+@Service
 public class UserSubscriptionImpl implements UserSubscriptionService {
 
     @Autowired

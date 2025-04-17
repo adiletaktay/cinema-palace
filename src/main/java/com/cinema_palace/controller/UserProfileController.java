@@ -33,13 +33,13 @@ public class UserProfileController {
         return new ResponseEntity<String>("profile delete successful!", HttpStatus.OK);
     }
 
-    @PostMapping("api/profile/validate/{email}/{profileName}")
+    @GetMapping("api/profile/validate/{email}/{profileName}")
     public ResponseEntity<Boolean> validateProfileName(@PathVariable("email") String email, @PathVariable("profileName") String profileName) {
         boolean validity = userProfileService.validateProfileName(email, profileName);
         return ResponseEntity.ok(validity);
     }
 
-    @PostMapping("api/profile/validate/{gameHandle}")
+    @GetMapping("api/profile/validate/{gameHandle}")
     public ResponseEntity<Boolean> validateGameHandle(@PathVariable("gameHandle") String gameHandle) {
         boolean validity = userProfileService.validateGameHandle(gameHandle);
         return ResponseEntity.ok(validity);

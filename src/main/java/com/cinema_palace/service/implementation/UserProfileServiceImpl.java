@@ -3,6 +3,7 @@ package com.cinema_palace.service.implementation;
 import com.cinema_palace.model.UserProfile;
 import com.cinema_palace.repository.UserProfileRepo;
 import com.cinema_palace.service.UserProfileService;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +15,14 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Autowired
     private UserProfileRepo userProfileRepository;
-    public UserProfile addProfile(UserProfile newProfile){
+
+    public UserProfile addProfile(UserProfile newProfile) {
         return userProfileRepository.save(newProfile);
     }
 
     @Override
-    public UserProfile updateProfile(UserProfile updateProfile,String email, String profileName) {
-        Optional<UserProfile> existingProfile=userProfileRepository.findByEmailAndProfileName(email,profileName);
+    public UserProfile updateProfile(UserProfile updateProfile, String email, String profileName) {
+        Optional<UserProfile> existingProfile = userProfileRepository.findByEmailAndProfileName(email, profileName);
         UserProfile profile = existingProfile.get();
         profile.setProfileName(updateProfile.getProfileName());
         profile.setProfilePicture(updateProfile.getProfilePicture());
@@ -31,19 +33,20 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
+    @Transactional
     public void deleteProfile(String email, String profileName) {
         userProfileRepository.deleteByEmailAndProfileName(email, profileName);
     }
 
     @Override
     public boolean validateProfileName(String email, String profileName) {
-        Optional<UserProfile> existingProfile= userProfileRepository.findByEmailAndProfileName(email, profileName);
+        Optional<UserProfile> existingProfile = userProfileRepository.findByEmailAndProfileName(email, profileName);
         return existingProfile.isEmpty();
     }
 
     @Override
     public boolean validateGameHandle(String gameHandle) {
-        Optional<UserProfile> existingProfile=userProfileRepository.findByGameHandle(gameHandle);
+        Optional<UserProfile> existingProfile = userProfileRepository.findByGameHandle(gameHandle);
         return existingProfile.isEmpty();
     }
 

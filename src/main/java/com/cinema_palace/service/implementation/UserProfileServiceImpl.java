@@ -32,25 +32,21 @@ public class UserProfileServiceImpl implements UserProfileService {
         return userProfileRepository.save(profile);
     }
 
-    @Override
     @Transactional
     public void deleteProfile(String email, String profileName) {
         userProfileRepository.deleteByEmailAndProfileName(email, profileName);
     }
 
-    @Override
     public boolean validateProfileName(String email, String profileName) {
         Optional<UserProfile> existingProfile = userProfileRepository.findByEmailAndProfileName(email, profileName);
         return existingProfile.isEmpty();
     }
 
-    @Override
     public boolean validateGameHandle(String gameHandle) {
         Optional<UserProfile> existingProfile = userProfileRepository.findByGameHandle(gameHandle);
         return existingProfile.isEmpty();
     }
 
-    @Override
     public List<UserProfile> getAllProfiles(String email) {
         return userProfileRepository.findAllByEmail(email);
     }

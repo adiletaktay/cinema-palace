@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface PreferencesRepo extends JpaRepository<UserVideoList, Long> {
     void deleteByEmailAndProfileNameAndVideoTitle(String email, String profileName, String videoTitle);
+    void deleteByEmailAndProfileName(String email, String profileName);
     List<UserVideoList> findAllByEmailAndProfileName(String email, String profileName);
     Optional<UserVideoList> findByEmailAndProfileNameAndVideoTitle(String email, String profileName, String videoTitle);
 }

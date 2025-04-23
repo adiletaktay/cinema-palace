@@ -33,6 +33,12 @@ public class UserPreferencesController {
         return new ResponseEntity<String>("removed from list!", HttpStatus.OK);
     }
 
+    @DeleteMapping("api/list/delete/profile/{email}/{profileName}")
+    public ResponseEntity<String> deleteProfile(@PathVariable("email") String email, @PathVariable("profileName") String profileName) {
+        preferencesService.removeProfile(email, profileName);
+        return new ResponseEntity<String>("removed from list!", HttpStatus.OK);
+    }
+
     @GetMapping("api/list/check/{email}/{profileName}/{videoTitle}")
     public ResponseEntity<Boolean> checkInList(@PathVariable("email") String email, @PathVariable("profileName") String profileName, @PathVariable("videoTitle") String videoTitle) {
         boolean validity = preferencesService.checkInList(email, profileName, videoTitle);

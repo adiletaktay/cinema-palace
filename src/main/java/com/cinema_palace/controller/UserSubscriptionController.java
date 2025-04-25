@@ -16,7 +16,7 @@ public class UserSubscriptionController {
 
     @PostMapping("api/subscribe")
     public ResponseEntity<UserSubscription> planRegistration(@RequestBody UserSubscription newSubscriber) {
-        return new ResponseEntity<UserSubscription>(userSubscriptionService.planRegistration(newSubscriber), HttpStatus.CREATED);
+        return new ResponseEntity<>(userSubscriptionService.planRegistration(newSubscriber), HttpStatus.CREATED);
     }
 
     @GetMapping("api/subscribe/{email}")

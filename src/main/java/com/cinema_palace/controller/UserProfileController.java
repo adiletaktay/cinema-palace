@@ -18,19 +18,19 @@ public class UserProfileController {
 
     @PostMapping("api/profile/add")
     public ResponseEntity<UserProfile> addProfile(@RequestBody UserProfile newProfile) {
-        return new ResponseEntity<UserProfile>(userProfileService.addProfile(newProfile), HttpStatus.CREATED);
+        return new ResponseEntity<>(userProfileService.addProfile(newProfile), HttpStatus.CREATED);
     }
 
     @PutMapping("api/profile/update/{email}/{profileName}")
     public ResponseEntity<UserProfile> updateProfile(@PathVariable("email") String email, @PathVariable("profileName") String profileName,
                                                      @RequestBody UserProfile existingProfile) {
-        return new ResponseEntity<UserProfile>(userProfileService.updateProfile(existingProfile, email, profileName), HttpStatus.OK);
+        return new ResponseEntity<>(userProfileService.updateProfile(existingProfile, email, profileName), HttpStatus.OK);
     }
 
     @DeleteMapping("api/profile/delete/{email}/{profileName}")
     public ResponseEntity<String> deleteProfile(@PathVariable("email") String email, @PathVariable("profileName") String profileName) {
         userProfileService.deleteProfile(email, profileName);
-        return new ResponseEntity<String>("profile delete successful!", HttpStatus.OK);
+        return new ResponseEntity<>("profile delete successful!", HttpStatus.OK);
     }
 
     @GetMapping("api/profile/validate/{email}/{profileName}")

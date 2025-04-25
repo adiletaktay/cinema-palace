@@ -15,7 +15,7 @@ public class UserAccountController {
 
     @PostMapping("api/register")
     public ResponseEntity<UserAccount> userRegister(@RequestBody UserAccount newUser) {
-        return new ResponseEntity<UserAccount>(userAccountService.userRegister(newUser), HttpStatus.CREATED);
+        return new ResponseEntity<>(userAccountService.userRegister(newUser), HttpStatus.CREATED);
     }
 
     @GetMapping("api/verifyEmail/{email}")

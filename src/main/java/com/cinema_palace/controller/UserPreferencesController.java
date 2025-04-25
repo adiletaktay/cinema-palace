@@ -19,7 +19,7 @@ public class UserPreferencesController {
 
     @PostMapping("api/list/add")
     public ResponseEntity<UserVideoList> addToList(@RequestBody UserVideoList addVideo) {
-        return new ResponseEntity<UserVideoList>(preferencesService.addToList(addVideo), HttpStatus.CREATED);
+        return new ResponseEntity<>(preferencesService.addToList(addVideo), HttpStatus.CREATED);
     }
 
     @GetMapping("api/list/{email}/{profileName}")
@@ -30,13 +30,13 @@ public class UserPreferencesController {
     @DeleteMapping("api/list/delete/{email}/{profileName}/{videoTitle}")
     public ResponseEntity<String> deleteFromList(@PathVariable("email") String email, @PathVariable("profileName") String profileName, @PathVariable("videoTitle") String videoTitle) {
         preferencesService.removeFromList(email, profileName, videoTitle);
-        return new ResponseEntity<String>("removed from list!", HttpStatus.OK);
+        return new ResponseEntity<>("removed from list!", HttpStatus.OK);
     }
 
     @DeleteMapping("api/list/delete/profile/{email}/{profileName}")
     public ResponseEntity<String> deleteProfile(@PathVariable("email") String email, @PathVariable("profileName") String profileName) {
         preferencesService.removeProfile(email, profileName);
-        return new ResponseEntity<String>("removed from list!", HttpStatus.OK);
+        return new ResponseEntity<>("removed from list!", HttpStatus.OK);
     }
 
     @GetMapping("api/list/check/{email}/{profileName}/{videoTitle}")

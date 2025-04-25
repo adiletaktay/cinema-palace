@@ -1,6 +1,7 @@
 package com.cinema_palace.service.implementation;
 
 import com.cinema_palace.model.UserProfile;
+import com.cinema_palace.repository.PreferencesRepo;
 import com.cinema_palace.repository.UserProfileRepo;
 import com.cinema_palace.service.UserProfileService;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,19 +17,27 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Autowired
     private UserProfileRepo userProfileRepository;
 
+    @Autowired
+    private PreferencesRepo preferencesRepository;
+
     public UserProfile addProfile(UserProfile newProfile) {
         return userProfileRepository.save(newProfile);
     }
 
     @Override
+    @Transactional
     public UserProfile updateProfile(UserProfile updateProfile, String email, String profileName) {
         Optional<UserProfile> existingProfile = userProfileRepository.findByEmailAndProfileName(email, profileName);
         UserProfile profile = existingProfile.get();
+        String oldProfileName = profile.getProfileName();
+
         profile.setProfileName(updateProfile.getProfileName());
         profile.setProfilePicture(updateProfile.getProfilePicture());
         profile.setLanguage(updateProfile.getLanguage());
         profile.setMaturity(updateProfile.getMaturity());
         profile.setGameHandle(updateProfile.getGameHandle());
+
+        preferencesRepository.updateProfileNameInUserVideoList(email, oldProfileName, updateProfile.getProfileName());
         return userProfileRepository.save(profile);
     }
 
